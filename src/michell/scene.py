@@ -134,14 +134,14 @@ class Sphere(TexturedEntity):
         )
 
     def map_entity(self, point):
-        p_x, p_y, p_z = point
+        p_x, p_y, p_z = point - self.position
         p_r = np.sqrt(p_x**2 + p_y**2 + p_z**2)
         p_theta = np.arccos(p_y / p_r) / np.pi
         p_phi = np.arctan2(p_x, p_z)
         if p_phi < 0:
             p_phi = 2 * np.pi + p_phi
         p_phi = p_phi / (2 * np.pi)
-        return p_theta, p_phi       
+        return p_theta, p_phi
 
 class Ring(TexturedEntity):
     """Describes ring with its position two radiuses and normal vector."""
@@ -220,7 +220,7 @@ class Ring(TexturedEntity):
         return over + below + upper
 
     def map_entity(self, point):
-        p_x, _, p_z = point
+        p_x, _, p_z = point - self.position
         radius = (
             (np.linalg.norm(point) - self.small_radius) %
             (self.big_radius - self.small_radius)
