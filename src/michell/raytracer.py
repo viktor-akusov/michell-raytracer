@@ -85,5 +85,5 @@ class Raytracer:
             iterations += 1
         progress_bar.update(100)
         progress_bar.finish()
-        print("Wait. Scene are beign painted...")
+        print("Wait. Scene are being painted...")
         return self.calc_image()
