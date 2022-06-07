@@ -35,7 +35,7 @@ class Raytracer:
             u.matrix_normalization(self.points) *
             (
                 -abs(self.curvature) * square_areal_velocity /
-                np.power(np.einsum('...i,...i', self.points, self.points), 2.5)
+                np.power(np.einsum('...i,...i', self.points, self.points), 2)
             )[:,:,np.newaxis,]
         )
         self.directions = u.matrix_normalization(self.directions + accel * self.steps)
