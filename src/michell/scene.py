@@ -92,7 +92,7 @@ class TexturedEntity(BaseEntity):
 
     def get_colors(self, points):
         """Returns matrix of colors (m, n, 3) using color function."""
-        return np.apply_along_axis(lambda x: self.texture.get_color(self.map_entity(x)), 2, points) 
+        return np.apply_along_axis(lambda x: self.texture.get_color(self.map_entity(x)), 2, points)
 
 class Sphere(TexturedEntity):
     """Describes sphere with its position and radius."""
