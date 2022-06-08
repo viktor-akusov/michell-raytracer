@@ -28,14 +28,13 @@ class Raytracer:
         """Returns matrices of new origins and directions (m, n, 3)
         based on old ones and matrix of steps (m, n, 1). Uses relativistic
         geodesic paths for rays."""
-        areal_velocity = np.cross(self.points, self.directions)
-        square_areal_velocity = np.einsum('...i,...i', areal_velocity, areal_velocity)
+        square_areal_velocity = np.power(np.einsum('ijk,ijk->ij',self.points, self.directions),2)
         self.points = self.points + self.directions * self.steps
         accel = (
-            u.matrix_normalization(self.points) *
+            self.points *
             (
                 -abs(self.curvature) * square_areal_velocity /
-                np.power(np.einsum('...i,...i', self.points, self.points), 2)
+                np.power(np.einsum('...i,...i', self.points, self.points), 2.5)
             )[:,:,np.newaxis,]
         )
         self.directions = u.matrix_normalization(self.directions + accel * self.steps)
