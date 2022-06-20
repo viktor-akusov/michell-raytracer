@@ -1,5 +1,7 @@
 # Michell's Raytracer
 
+![image info](https://i.imgur.com/2F211aq.png)
+
 Simple relativistic nonlinear raytracer named after John Michell,
 the first man to think about existence of black holes (he called
 them "dark stars").
